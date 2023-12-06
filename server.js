@@ -1,17 +1,12 @@
-// server.js
-
 import express from 'express';
-import bodyParser from 'body-parser'; // Import body-parser
-import routes from './routes';
+import startServer from './libs/boot';
+import injectRoutes from './routes';
+import injectMiddlewares from './libs/middlewares';
 
-const app = express();
-const port = process.env.PORT || 5000;
+const server = express();
 
-// Use body-parser middleware to parse JSON requests
-app.use(bodyParser.json());
+injectMiddlewares(server);
+injectRoutes(server);
+startServer(server);
 
-app.use('/', routes);
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+export default server;
