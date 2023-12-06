@@ -1,6 +1,7 @@
 // utils/db.js
 
-import { MongoClient } from "mongodb";
+import { MongoClient } from 'mongodb';
+import sha1 from 'sha1';
 
 class DBClient {
   constructor() {
